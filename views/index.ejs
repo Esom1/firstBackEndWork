@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body>
+ <%- include('./partials/nav.ejs') %>
+
+  <section class="container  section-container">
+    <h2>welcome to my ejs home page</h2>
+    <hr />
+    <!-- to check for if there are no trainees available you use a 'if' and 'else' -->
+    <% if(trainees.length){%>
+      <% trainees.map((trainee)=>{%>
+       <div class="section-mapped-data">
+        <h1><%= trainee.name %></h1>
+        <h4><%= trainee.profession %></h4>
+       </div>
+      <% }) %>
+      <% }else{ %>
+        <h1>no trainees available</h1>
+        <% } %>
+    
+  </section>
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>
