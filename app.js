@@ -101,19 +101,30 @@ catch(err){
 
 
 // routes
-const trainees = [
-  {name:'Christy', profession: 'front-end-dev'},
-  {name:'ejiro', profession: 'back-end-dev'},
-  {name:'john', profession: 'mobile app-dev'},
-  {name:'henry', profession: 'desktop-dev'}
-]
+// const trainees = [
+//   {name:'Christy', profession: 'front-end-dev'},
+//   {name:'ejiro', profession: 'back-end-dev'},
+//   {name:'john', profession: 'mobile app-dev'},
+//   {name:'henry', profession: 'desktop-dev'}
+// ]
 
 app.get ('/',(req,res)=>{
-  res.render('index' , {title: 'EJS Home Pages', trainees})
+ res.redirect('/todos')
 })
 
 app.get ('/about',(req,res)=>{
-  res.render('about' , {title: 'EJS About Pages', trainees})
+  res.render('about' , {title: 'EJS About Pages',})
+})
+
+// Todo routes
+app.get('/todos', async(req,res)=>{
+  try{
+    const allTrainees = await Trainees.find()
+    res.render('index' , {title: 'EJS Home Pages', trainees: allTrainees})
+    res.send(allTrainees)
+  }catch(err){
+    console.log(err);
+  }
 })
 
 app.get('/todo/create',(req,res)=>{
