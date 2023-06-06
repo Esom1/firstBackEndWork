@@ -25,20 +25,20 @@ mongoose.connect(process.env.DBURL)
 .then(()=>console.log('DB connected successfully'))
 
 // TESTING THE MODEL AND DB
-app.get('/add-trainee',(req,res)=>{
-  const TRAINEES = new Trainees({
-    name : 'sam',
-    profession : 'seniorfrontend  dev',
-    description : 'he is a good coder'
-  })
-  TRAINEES.save()
-  .then((result)=>{
-    res.send(result)
-  })
-  .catch((err)=>{
-    console.log(err);
-  })
-})
+// app.get('/add-trainee',(req,res)=>{
+//   const TRAINEES = new Trainees({
+//     name : 'sam',
+//     profession : 'seniorfrontend  dev',
+//     description : 'he is a good coder'
+//   })
+//   TRAINEES.save()
+//   .then((result)=>{
+//     res.send(result)
+//   })
+//   .catch((err)=>{
+//     console.log(err);
+//   })
+// })
 
 
 // either use this below or use the one above.they do the same work.
@@ -65,14 +65,14 @@ app.get('/add-trainee',(req,res)=>{
 
 
 // this method is used to find all trainees
-app.get('/all-trianees',async(req,res)=>{
-  try{
-    const allTrainees = await Trainees.find()
-    res.send(allTrainees)
-  }catch(err){
-    console.log(err);
-  }
-})
+// app.get('/all-trianees',async(req,res)=>{
+//   try{
+//     const allTrainees = await Trainees.find()
+//     res.send(allTrainees)
+//   }catch(err){
+//     console.log(err);
+//   }
+// })
 
 // to get a single trainee
 // app.get('/single-trainee',(req,res)=>{
@@ -88,15 +88,15 @@ app.get('/all-trianees',async(req,res)=>{
 
 
 // this method is used to find just a single trainee
-app.get('/single-trainee',async(req,res)=>{
-try{
-  const singleTrainee = await Trainees.findById('647df2e9f15830cf177bb9b5')
-  res.send(singleTrainee)
-}
-catch(err){
-  console.log(err);
-}
-})
+// app.get('/single-trainee',async(req,res)=>{
+// try{
+//   const singleTrainee = await Trainees.findById('647df2e9f15830cf177bb9b5')
+//   res.send(singleTrainee)
+// }
+// catch(err){
+//   console.log(err);
+// }
+// })
 
 
 
