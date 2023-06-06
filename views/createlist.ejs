@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<%- include('./partial/head.ejs') %>
+<body>
+   <div class="container">
+    <%- include('./partial/nav.ejs') %>
+   </div>
+   <main class="container">
+    <form action="">
+      <label for="name">Name</label>
+      <input type="text" id="name"> <br> <br>
+      <label for="profession">Profession</label>
+      <input type="text" id="profession"><br><br>
+      <label for="description">Description</label>
+      <textarea id="description" cols="30" rows="10"></textarea> <br> <br>
+      <button>submit</button>
+  </form>
+   </main>
+</body>
+<div class="container section-container">
+  <%- include('./partial/footer.ejs') %>
+
+</div>
+</html> 

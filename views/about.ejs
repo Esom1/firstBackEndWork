@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head.ejs') %>
+<div class="section-container">
+  <%- include('./partial/head.ejs') %>
+</div>
 
 <body>
-  <%- include('./partials/nav.ejs') %>
+ <div class="section-container">
+  <%- include('./partial/nav.ejs') %>
+ </div>
 
-  <section class="">
+  <section class="container section-container">
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, amet quas maiores incidunt ea, eum odit debitis id, voluptates nesciunt accusamus enim mollitia? Qui quasi quisquam explicabo aliquid mollitia esse nobis aspernatur debitis nisi, a, obcaecati nesciunt quaerat eum fugiat!</p>
   </section>
-  <section>
+  <section class="container">
     <h2>Welcome to my ejs About Page</h2>
   </section>
 
-  <%- include('./partials/footer.ejs') %>
+ <div class="container section-container">
+  <%- include('./partial/footer.ejs') %>
+ </div>
 
 </body>
 </html>
