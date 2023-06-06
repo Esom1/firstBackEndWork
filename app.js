@@ -27,9 +27,9 @@ mongoose.connect(process.env.DBURL)
 // TESTING THE MODEL AND DB
 app.get('/add-trainee',(req,res)=>{
   const TRAINEES = new Trainees({
-    name : 'Christy',
-    profession : 'senior dev',
-    description : 'she is a good coder'
+    name : 'sam',
+    profession : 'seniorfrontend  dev',
+    description : 'he is a good coder'
   })
   TRAINEES.save()
   .then((result)=>{
@@ -39,6 +39,67 @@ app.get('/add-trainee',(req,res)=>{
     console.log(err);
   })
 })
+
+
+// either use this below or use the one above.they do the same work.
+// try{
+//   const savedTrainees = await TRAINEES.save()
+// res.send (savedTrainees)
+// }catch(err){
+  // console.log(err)
+// }
+// })
+
+// for getting all info froo the DB
+// app.get('/all-trainees',(req,res)=>{
+//   Trainees.find()
+//   .then((results)=>{
+//     res.send(results)
+//   })
+//   .catch((err)=>{
+//     console.log(err);
+//   })
+// })
+
+
+
+
+// this method is used to find all trainees
+app.get('/all-trianees',async(req,res)=>{
+  try{
+    const allTrainees = await Trainees.find()
+    res.send(allTrainees)
+  }catch(err){
+    console.log(err);
+  }
+})
+
+// to get a single trainee
+// app.get('/single-trainee',(req,res)=>{
+//   Trainees.findById('647f06ac4c042dacf14662e5')
+//   .tehn((result)=>{
+//     res.send(result)
+//   })
+//   .catch((err)=>{
+//     console.log(err);
+//   })
+// })
+
+
+
+// this method is used to find just a single trainee
+app.get('/single-trainee',async(req,res)=>{
+try{
+  const singleTrainee = await Trainees.findById('647df2e9f15830cf177bb9b5')
+  res.send(singleTrainee)
+}
+catch(err){
+  console.log(err);
+}
+})
+
+
+
 // routes
 const trainees = [
   {name:'Christy', profession: 'front-end-dev'},
