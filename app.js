@@ -19,6 +19,7 @@ require('dotenv').config()
 //   next()
 // })
 app.use(express.static('public'))
+app.use(express.urlencoded({extended:true}))
 
 // mongoose connection
 mongoose.connect(process.env.DBURL)
@@ -125,6 +126,19 @@ app.get('/todos', async(req,res)=>{
   }catch(err){
     console.log(err);
   }
+})
+
+// for the form
+app.post('/todos',(req,res)=>{
+  console.log(req.body);
+  const savedTrainee = new Trainees(req.body)
+  savedTrainee.save()
+  .then((result)=>{
+    res.redirect('/todos')
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
 })
 
 app.get('/todo/create',(req,res)=>{
