@@ -121,14 +121,14 @@ app.get('/todos', async(req,res)=>{
   try{
     const allTrainees = await Trainees.find()
     res.render('index' , {title: 'EJS Home Pages', trainees: allTrainees})
-    res.send(allTrainees)
+    // res.send(allTrainees)
   }catch(err){
     console.log(err);
   }
 })
 
 app.get('/todo/create',(req,res)=>{
-  res.render('createList',{ title:'Ejs create-todo Page'})
+  res.render('createlist',{ title:'Ejs create-todo Page'})
 })
 
 app.use((req,res)=>{
