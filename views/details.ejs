@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<%- include('../partial/head.ejs') %>
+<body>
+   <div class="container">
+    <%- include('../partial/nav.ejs') %>
+   </div>
+  <div class="mentor">
+    <h2> <%= trainees.name  %> </h2>
+    <hr>
+    <h2><%= trainees.profession %></h2>
+    <hr>
+    <h2><%= trainees.description %></h2>
+  </div>
+  <a href="/todos/delete/<%= trainees._id %>"><button>Delete</button></a>
+  <a href="/todos/edit/<%= trainees._id %>"><button>Edit</button></a>
+</body>
+<div class="container section-container">
+  <%- include('../partial/footer.ejs') %>
+
+</div>
+</html> 

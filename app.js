@@ -1,6 +1,6 @@
 const express = require('express');
-const mongoose = require('mongoose')
-const Trainees = require('./model/todoModel')
+const mongoose = require('mongoose');
+const todosRouter = require('./routes/todosRoutes')
 
 const app = express()
 const port = process.env.PORT||8080
@@ -24,6 +24,8 @@ app.use(express.urlencoded({extended:true}))
 // mongoose connection
 mongoose.connect(process.env.DBURL)
 .then(()=>console.log('DB connected successfully'))
+
+
 
 // TESTING THE MODEL AND DB
 // app.get('/add-trainee',(req,res)=>{
@@ -61,8 +63,6 @@ mongoose.connect(process.env.DBURL)
 //     console.log(err);
 //   })
 // })
-
-
 
 
 // this method is used to find all trainees
@@ -109,6 +109,8 @@ mongoose.connect(process.env.DBURL)
 //   {name:'henry', profession: 'desktop-dev'}
 // ]
 
+
+// home and about route
 app.get ('/',(req,res)=>{
  res.redirect('/todos')
 })
@@ -117,34 +119,10 @@ app.get ('/about',(req,res)=>{
   res.render('about' , {title: 'EJS About Pages',})
 })
 
-// Todo routes
-app.get('/todos', async(req,res)=>{
-  try{
-    const allTrainees = await Trainees.find()
-    res.render('index' , {title: 'EJS Home Pages', trainees: allTrainees})
-    // res.send(allTrainees)
-  }catch(err){
-    console.log(err);
-  }
-})
+// Todo routes  (this is now a middleware)
+app.use('/todos',todosRouter)
 
-// for the form
-app.post('/todos',(req,res)=>{
-  console.log(req.body);
-  const savedTrainee = new Trainees(req.body)
-  savedTrainee.save()
-  .then((result)=>{
-    res.redirect('/todos')
-  })
-  .catch((err)=>{
-    console.log(err);
-  })
-})
-
-app.get('/todo/create',(req,res)=>{
-  res.render('createlist',{ title:'Ejs create-todo Page'})
-})
-
+// error route
 app.use((req,res)=>{
   res.status(404).render('404', {title: 'Ejs error page'})
 })

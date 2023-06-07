@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partial/head.ejs') %>
+<%- include('../partial/head.ejs') %>
 <body>
 <div class="">
-  <%- include('./partial/nav.ejs') %>
+  <%- include('../partial/nav.ejs') %>
 </div>
 
   <section class="container  section-container">
@@ -12,9 +12,11 @@
     <!-- to check for if there are no trainees available you use a 'if' and 'else' -->
     <% if(trainees.length){%>
       <% trainees.map((trainee)=>{%>
-       <div class="section-mapped-data">
-        <h1><%= trainee.name %></h1>
-        <h4><%= trainee.profession %></h4>
+        <div class="section-mapped-data">
+         <a href="/todos/specific/<%= trainee._id %>">
+           <h1><%= trainee.name %></h1>
+           <h4><%= trainee.profession %></h4>
+         </a>
        </div>
       <% }) %>
       <% }else{ %>
@@ -22,6 +24,6 @@
         <% } %>
     
   </section>
-  <%- include('./partial/footer.ejs') %>
+  <%- include('../partial/footer.ejs') %>
 </body>
 </html>
